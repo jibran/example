@@ -1,0 +1,62 @@
+# Size of the environment being deployed.
+# https://docs.skpr.io/size
+# This is configurable profile.
+size: "micro"
+
+# Image storage information required for deploying the application.
+# This information is combined with a command line provided tag for
+# during deployed eg.
+#  `skpr depoy dev 0.0.1` = docker.io/example/project:0.0.1
+image:
+  repository: "docker.io/example/project"
+
+# Hooks are actions which are being performed during an application lifecycle.
+# eg. Rebuilding Drupals cache on deployment.
+hooks:
+  post:
+    - make deploy
+
+# Services are technologies which complement your standard deployment stack.
+services:
+  # Solr provides advanced search functionality.
+  # https://docs.skpr.io/addon/solr
+  # solr:
+  #   core1:
+  #     version: "5.x"
+  #   core2:
+  #     version: "5.x"
+
+  # Clamd provides vulnerability scanning for uploaded files.
+  # https://docs.skpr.io/addon/clamd
+  # clamd:
+  #   version: "latest"
+
+# Crons are background tasks which allow for large tasks to be
+# executed outside of a web request.
+# These tasks will execute the "cli" container eg.
+#    org/project:0.0.1;cli
+cron:
+  # Standard Drupal cron execution.
+  drush:
+    command:  "drush cron"
+    schedule: "@hourly"
+
+  # Processing mail via a queue allows faster web request response times
+  # and more resiliant mail delivery.
+  # https://docs.skpr.io/drupal/smtp
+  mail:
+    command:  "drush mail-queue"
+    schedule: "*/5 * * * *"
+
+# Healthz provides developers with a pattern for implementing custom health checks.
+# https://docs.skpr.io/healthz
+# Examples of healthz checks:
+#  * Can the application connection to the Solr backend?
+#  * Is the queue being processed?
+#  * Can the application connect to a service with it's stored API key?
+healthz:
+  path: "/healthz"
+
+  # Turns on Slack notifications for developers.
+  slack:
+    callback: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
