@@ -20,11 +20,6 @@ services:
   #   core2:
   #     version: "5.x"
 
-  # Clamd provides vulnerability scanning for uploaded files.
-  # https://docs.skpr.io/addon/clamd
-  # clamd:
-  #   version: "latest"
-
 # Crons are background tasks which allow for large tasks to be
 # executed outside of a web request.
 # These tasks will execute the "cli" container eg.
