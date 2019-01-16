@@ -10,12 +10,6 @@ size: "micro"
 image:
   repository: "docker.io/example/project"
 
-# Hooks are actions which are being performed during an application lifecycle.
-# eg. Rebuilding Drupals cache on deployment.
-hooks:
-  post:
-    - make deploy
-
 # Services are technologies which complement your standard deployment stack.
 services:
   # Solr provides advanced search functionality.
