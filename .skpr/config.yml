@@ -1,5 +1,4 @@
 project: example
 
-cluster:
-  endpoint: "127.0.0.1:8888"
-  insecure: true
+endpoint: "127.0.0.1:8080"
+insecure: true
