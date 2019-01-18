@@ -1,7 +1,6 @@
-FROM skpr/php-cli:7.2-1.x as build
-ADD . /data
-RUN composer install --no-dev --prefer-dist --no-progress --no-suggest --no-interaction --optimize-autoloader
+ARG FROM=skpr/php-cli:7.2-1.x
+FROM ${FROM} as cli
 
 FROM skpr/php-fpm:7.2-1.x
-COPY --from=build /data /data
+COPY --from=cli /data /data
 RUN chown -R skpr:skpr /data
