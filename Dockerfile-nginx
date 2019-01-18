@@ -2,6 +2,6 @@ FROM skpr/php-cli:7.2-1.x as build
 ADD . /data
 RUN composer install --no-dev --prefer-dist --no-progress --no-suggest --no-interaction --optimize-autoloader
 
-FROM skpr/nginx:7.2-1.x
+FROM skpr/nginx:1.x
 COPY --from=build /data /data
 RUN chown -R skpr:skpr /data
