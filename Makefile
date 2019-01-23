@@ -8,4 +8,9 @@ build:
 	docker build -f Dockerfile-fpm -t ${IMAGE}:${TAG}-fpm .
 	docker build -f Dockerfile-cli -t ${IMAGE}:${TAG}-cli .
 
-.PHONY: build
+push:
+	docker push ${IMAGE}:${TAG}-nginx
+	docker push ${IMAGE}:${TAG}-fpm
+	docker push ${IMAGE}:${TAG}-cli
+
+.PHONY: build push
