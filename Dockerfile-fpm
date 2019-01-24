@@ -1,0 +1,6 @@
+ARG FROM=skpr/php-cli:7.2-1.x
+FROM ${FROM} as cli
+
+FROM skpr/php-fpm:7.2-1.x
+COPY --from=cli /data /data
+RUN chown -R skpr:skpr /data

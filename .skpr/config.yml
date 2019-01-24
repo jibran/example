@@ -1,4 +1,10 @@
 project: example
 
-endpoint: "127.0.0.1:8080"
-insecure: true
+connection:
+  api:
+    host: localhost
+    port: 8080
+    insecure: true
+  ssh:
+    host: localhost
+    port: 2020
