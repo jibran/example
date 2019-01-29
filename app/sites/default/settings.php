@@ -23,9 +23,6 @@ $databases['default']['default'] = array(
   'password' => skpr_config('mysql.default.password') ?: 'drupal',
   'host' => skpr_config('mysql.default.hostname') ?: '127.0.0.1',
 );
-if ($cert_path = skpr_config('mysql.tls.cert')) {
-  $databases['default']['default']['pdo'][PDO::MYSQL_ATTR_SSL_CA] = $cert_path;
-}
 
 $config['cron_safe_threshold'] = '0';
 $settings['file_public_path'] = skpr_config('mount.public') ?: 'sites/default/files';
