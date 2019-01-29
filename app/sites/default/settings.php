@@ -24,12 +24,14 @@ $databases['default']['default'] = array(
   'host' => skpr_config('mysql.default.hostname') ?: '127.0.0.1',
 );
 
+$settings['hash_salt'] = skpr_config('salt') ?: '';
+
 $config['cron_safe_threshold'] = '0';
 $settings['file_public_path'] = skpr_config('mount.public') ?: 'sites/default/files';
 $config['system.file']['path']['temporary'] = skpr_config('mount.temporary') ?: '/tmp';
 $settings['file_private_path'] = skpr_config('mount.private') ?: 'sites/default/files/private';
 
-$settings['install_profile'] = 'umami';
+$settings['install_profile'] = 'standard';
 
 $settings['trusted_host_patterns'][] = '^127\.0\.0\.1$';
 $settings['trusted_host_patterns'][] = '^localhost$';
