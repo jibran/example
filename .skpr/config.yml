@@ -2,9 +2,9 @@ project: example
 
 connection:
   api:
-    host: localhost
+    host: 127.0.0.1
     port: 8080
     insecure: true
   ssh:
-    host: localhost
+    host: 127.0.0.1
     port: 2020
