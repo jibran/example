@@ -26,6 +26,8 @@ $databases['default']['default'] = array(
 
 $settings['hash_salt'] = skpr_config('salt') ?: '';
 
+$config_directories[CONFIG_SYNC_DIRECTORY] = __DIR__ . '/../../../config-export';
+
 $config['cron_safe_threshold'] = '0';
 $settings['file_public_path'] = skpr_config('mount.public') ?: 'sites/default/files';
 $config['system.file']['path']['temporary'] = skpr_config('mount.temporary') ?: '/tmp';
