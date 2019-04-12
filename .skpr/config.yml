@@ -1,10 +1,3 @@
 project: example
 
-connection:
-  api:
-    host: 127.0.0.1
-    port: 30443
-    insecure: true
-  ssh:
-    host: 127.0.0.1
-    port: 30022
+cluster: cluster.test.skpr.io

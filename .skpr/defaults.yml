@@ -37,6 +37,18 @@ cron:
     command:  "drush mail-queue"
     schedule: "*/5 * * * *"
 
+# @todo, Make these defaults of the stack.
+ingress:
+  cookies:
+   - SESS*
+   - SSESS*
+  headers:
+   - Accept
+   - Authorization
+   - CloudFront-Forwarded-Proto
+   - Host
+   - User-Agent
+
 # Healthz provides developers with a pattern for implementing custom health checks.
 # https://docs.skpr.io/healthz
 # Examples of healthz checks:
