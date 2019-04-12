@@ -37,3 +37,4 @@ $settings['install_profile'] = 'standard';
 
 $settings['trusted_host_patterns'][] = '^127\.0\.0\.1$';
 $settings['trusted_host_patterns'][] = '^localhost$';
+$settings['trusted_host_patterns'][] = '(.*)\.skpr\.dev$';
