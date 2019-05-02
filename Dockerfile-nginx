@@ -3,4 +3,3 @@ FROM ${FROM} as cli
 
 FROM skpr/nginx:1.x
 COPY --from=cli /data /data
-RUN chown -R skpr:skpr /data

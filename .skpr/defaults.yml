@@ -49,6 +49,13 @@ ingress:
    - Host
    - User-Agent
 
+smtp:
+  from:
+    address: nick@previousnext.com.au
+
+backup:
+  schedule: "@daily"
+
 # Healthz provides developers with a pattern for implementing custom health checks.
 # https://docs.skpr.io/healthz
 # Examples of healthz checks:
