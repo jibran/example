@@ -172,3 +172,20 @@ parameters:
     maxAge: false
     # Sets the Access-Control-Allow-Credentials header.
     supportsCredentials: false
+
+  monolog.channel_handlers:
+     # Log to the stdout by default.
+     default: ['stdout']
+
+services:
+  monolog.formatter:
+    class: Monolog\Formatter\LineFormatter
+    arguments: ["[%%datetime%%] %%channel%%.%%level_name%%: %%message%% %%extra%%\n"]
+    calls:
+      - [includeStacktraces, [false]]
+  monolog.handler.stdout:
+    class: Monolog\Handler\StreamHandler
+    arguments: ['php://stdout']
+    calls:
+      - [setFormatter, ['@monolog.formatter']]
+
