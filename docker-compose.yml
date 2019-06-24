@@ -12,6 +12,10 @@ services:
     image: skpr/php-fpm:7.2-1.x
     volumes:
       - .:/data
+    environment:
+      # - "NEW_RELIC_ENABLED=true"
+      # - "NEW_RELIC_APP_NAME=My Application"
+      # - "NEW_RELIC_LICENSE_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
   php-cli:
     image: skpr/php-cli:7.2-1.x
