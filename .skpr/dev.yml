@@ -1,5 +1,6 @@
-# ingress:
-#   - "dev.example.com"
+ingress:
+  routes:
+    - "dev.example.com"
 #   Ingress can also be configured to expose this application
 #   on a subpath, this is useful for API based endpoints which
 #   need to be exposed to a frontend.

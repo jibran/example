@@ -1,0 +1,17 @@
+rewrite:
+  users_field_data:
+    mail: SANITIZED_MAIL
+    pass: SANITIZED_PASSWORD
+nodata:
+  - cache*
+  - captcha_sessions
+  - history
+  - flood
+  - batch
+  - queue
+  - sessions
+  - semaphore
+  - search_api_task
+  - search_dataset
+  - search_index
+  - search_total

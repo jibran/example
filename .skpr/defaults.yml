@@ -3,15 +3,14 @@
 # This is configurable profile.
 size: "small"
 
-# Image storage information required for deploying the application.
-# This information is combined with a command line provided tag for
-# during deployed eg.
-#  `skpr depoy dev 0.0.1` = docker.io/example/project:0.0.1
-image:
-  repository: "docker.io/skpr/example"
-
 # Services are technologies which complement your standard deployment stack.
 services:
+  mysql:
+    default:
+      class: nonprod
+      image:
+        schedule: "* * * * *"
+
   # Solr provides advanced search functionality.
   # https://docs.skpr.io/addon/solr
   # solr:
@@ -22,8 +21,7 @@ services:
 
 # Crons are background tasks which allow for large tasks to be
 # executed outside of a web request.
-# These tasks will execute the "cli" container eg.
-#    org/project:0.0.1;cli
+# These tasks will execute the "cli" container.
 cron:
   # Standard Drupal cron execution.
   drush:
@@ -55,16 +53,3 @@ smtp:
 
 backup:
   schedule: "@daily"
-
-# Healthz provides developers with a pattern for implementing custom health checks.
-# https://docs.skpr.io/healthz
-# Examples of healthz checks:
-#  * Can the application connection to the Solr backend?
-#  * Is the queue being processed?
-#  * Can the application connect to a service with it's stored API key?
-healthz:
-  path: "/healthz"
-
-  # Turns on Slack notifications for developers.
-  slack:
-    callback: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
