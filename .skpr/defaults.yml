@@ -9,7 +9,7 @@ services:
     default:
       class: nonprod
       image:
-        schedule: "* * * * *"
+        schedule: "@daily"
 
   # Solr provides advanced search functionality.
   # https://docs.skpr.io/addon/solr
@@ -28,12 +28,12 @@ cron:
     command:  "drush cron"
     schedule: "@hourly"
 
-  # Processing mail via a queue allows faster web request response times
+  # EXAMPLE: Processing mail via a queue allows faster web request response times
   # and more resiliant mail delivery.
   # https://docs.skpr.io/drupal/smtp
-  mail:
-    command:  "drush mail-queue"
-    schedule: "*/5 * * * *"
+  #mail:
+  #  command:  "drush mail-queue"
+  #  schedule: "*/5 * * * *"
 
 # @todo, Make these defaults of the stack.
 ingress:
