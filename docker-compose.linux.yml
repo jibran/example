@@ -1,0 +1,59 @@
+version: "3"
+
+services:
+
+  ##################
+  # Web
+  ##################
+
+  nginx:
+    image: skpr/nginx:1.x-dev
+    ports:
+      - 80:8080
+    volumes:
+      - .:/data
+      - ./app/sites/default/files:/data/app/sites/default/files:cached
+
+  php-fpm: &php-fpm
+    image: skpr/php-fpm:7.3-1.x
+    volumes:
+      - .:/data
+      - ./app/sites/default/files:/data/app/sites/default/files:cached
+
+  php-fpm-xdebug:
+    <<: *php-fpm
+    image: skpr/php-fpm:7.3-1.x-dev
+
+  ##################
+  # CLI
+  ##################
+
+  php-cli: &php-cli
+    image: skpr/php-cli:7.3-1.x
+    volumes:
+      - .:/data
+      - ./app/sites/default/files:/data/app/sites/default/files:cached
+
+  php-cli-xdebug:
+    <<: *php-cli
+    image: skpr/php-cli:7.3-1.x-dev
+
+  frontend:
+    image: skpr/node:10-1.x
+    volumes:
+      - .:/data
+
+  ##################
+  # Services
+  ##################
+
+  mysql:
+    # For "skpr2 mysql pull dev" to get the latest image.
+    image: xxxxxxx.dkr.ecr.ap-southeast-2.amazonaws.com/skpr-pnx-example/mysql:dev-default-latest
+    ports:
+      - 3306:3306
+
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
