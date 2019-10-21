@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+
+  nginx:
+    deploy:
+      resources:
+        reservations:
+          cpus:   '50m'
+          memory: '512Mi'
+        limits:
+          cpus:   '500m'
+          memory: '768Mi'
+
+  php-fpm:
+    deploy:
+      resources:
+        reservations:
+          cpus:   '50m'
+          memory: '512Mi'
+        limits:
+          cpus:   '500m'
+          memory: '768Mi'
+
+  mysql:
+    labels:
+      m8s.io/type: mysql
+    deploy:
+      resources:
+        reservations:
+          cpus:   '150m'
+          memory: '256Mi'
+        limits:
+          cpus:   '150m'
+          memory: '256Mi'
+
+  ## Disabled services.
+  php-fpm-xdebug:
+    labels:
+      m8s.io/skip: "true"
+
+  php-cli:
+    labels:
+      m8s.io/skip: "true"
+
+  php-cli-xdebug:
+    labels:
+      m8s.io/skip: "true"
+
+  mail:
+    labels:
+      m8s.io/skip: "true"
