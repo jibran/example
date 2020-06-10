@@ -68,6 +68,7 @@ services:
 
   mailhog:
     image: mailhog/mailhog
+    network_mode: service:nginx
     ports:
       - 8025:8025
 

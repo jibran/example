@@ -5,3 +5,13 @@ services:
     # The entire stack uses this container for it's network namespace.
     # On Linux we expose this entire network stack to the host system.
     network_mode: host
+  php-fpm:
+    network_mode: host
+  php-cli:
+    network_mode: host
+  frontend:
+    network_mode: host
+  mysql-default:
+    network_mode: host
+  mailhog:
+    network_mode: host
